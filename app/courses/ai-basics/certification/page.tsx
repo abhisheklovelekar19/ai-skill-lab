@@ -1,13 +1,18 @@
 'use client';
 
 import Link from 'next/link';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { trackEvent } from '@/app/components/GoogleAnalytics';
 
 export default function AIBasicsCertificationPage() {
     const [answers, setAnswers] = useState<{ [key: number]: string }>({});
     const [submitted, setSubmitted] = useState(false);
     const [score, setScore] = useState(0);
     const [passed, setPassed] = useState(false);
+
+    useEffect(() => {
+        trackEvent('quiz_start', { course_name: 'ai-basics' });
+    }, []);
 
     const questions = [
         {
@@ -137,8 +142,16 @@ export default function AIBasicsCertificationPage() {
         });
         
         setScore(correctCount);
-        setPassed(correctCount >= 6);
+        const hasPassed = correctCount >= 6;
+        setPassed(hasPassed);
         setSubmitted(true);
+        
+        if (hasPassed) {
+            trackEvent('quiz_pass', { 
+                course_name: 'ai-basics',
+                score: correctCount 
+            });
+        }
         
         window.scrollTo({ top: 0, behavior: 'smooth' });
     };

@@ -1,13 +1,19 @@
 'use client';
 
 import Link from 'next/link';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { trackEvent } from '@/app/components/GoogleAnalytics';
 
 export default function AutomationCertificationPage() {
     const [answers, setAnswers] = useState<{ [key: number]: string }>({});
     const [submitted, setSubmitted] = useState(false);
     const [score, setScore] = useState(0);
     const [passed, setPassed] = useState(false);
+
+    useEffect(() => {
+        // Track quiz start
+        trackEvent('quiz_start', { course_name: 'automation' });
+    }, []);
 
     const questions = [
         {
@@ -138,8 +144,17 @@ export default function AutomationCertificationPage() {
         });
         
         setScore(correctCount);
-        setPassed(correctCount >= 6);
+        const hasPassed = correctCount >= 6;
+        setPassed(hasPassed);
         setSubmitted(true);
+        
+        // Track quiz completion
+        if (hasPassed) {
+            trackEvent('quiz_pass', { 
+                course_name: 'automation',
+                score: correctCount 
+            });
+        }
         
         // Scroll to results
         window.scrollTo({ top: 0, behavior: 'smooth' });

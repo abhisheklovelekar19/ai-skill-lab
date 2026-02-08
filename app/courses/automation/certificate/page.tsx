@@ -1,18 +1,30 @@
 'use client';
 
 import Link from 'next/link';
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
+import { trackEvent } from '@/app/components/GoogleAnalytics';
 
 export default function CertificatePage() {
     const [learnerName, setLearnerName] = useState('');
     const [showCertificate, setShowCertificate] = useState(false);
+    const [feedbackGiven, setFeedbackGiven] = useState(false);
     const certificateRef = useRef<HTMLDivElement>(null);
 
     const handleGenerateCertificate = (e: React.FormEvent) => {
         e.preventDefault();
         if (learnerName.trim()) {
             setShowCertificate(true);
+            // Track certificate generation
+            trackEvent('certificate_generated', { course_name: 'automation' });
         }
+    };
+
+    const handleFeedback = (type: 'positive' | 'negative') => {
+        trackEvent('course_feedback', { 
+            course_name: 'automation',
+            feedback_type: type 
+        });
+        setFeedbackGiven(true);
     };
 
     const handlePrint = () => {
@@ -201,6 +213,32 @@ export default function CertificatePage() {
                                 >
                                     Explore More Courses →
                                 </Link>
+                            </div>                            
+                            {/* Feedback Section */}
+                            <div className="mt-8 pt-6 border-t border-cyan-500/20">
+                                <p className="text-sm text-gray-600 dark:text-gray-400 mb-3 text-center">
+                                    Was this course helpful?
+                                </p>
+                                {!feedbackGiven ? (
+                                    <div className="flex justify-center gap-4">
+                                        <button
+                                            onClick={() => handleFeedback('positive')}
+                                            className="px-6 py-2 bg-green-500/20 hover:bg-green-500/30 text-green-600 dark:text-green-400 rounded-lg border border-green-500/30 hover:border-green-500/50 transition-all"
+                                        >
+                                            👍 Yes
+                                        </button>
+                                        <button
+                                            onClick={() => handleFeedback('negative')}
+                                            className="px-6 py-2 bg-orange-500/20 hover:bg-orange-500/30 text-orange-600 dark:text-orange-400 rounded-lg border border-orange-500/30 hover:border-orange-500/50 transition-all"
+                                        >
+                                            👎 Needs improvement
+                                        </button>
+                                    </div>
+                                ) : (
+                                    <p className="text-sm text-center text-green-600 dark:text-green-400">
+                                        ✓ Thank you for your feedback!
+                                    </p>
+                                )}
                             </div>
                         </div>
                     </>

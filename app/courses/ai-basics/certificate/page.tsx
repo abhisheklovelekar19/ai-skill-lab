@@ -1,17 +1,28 @@
 'use client';
 
 import Link from 'next/link';
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
+import { trackEvent } from '@/app/components/GoogleAnalytics';
 
 export default function AIBasicsCertificatePage() {
     const [learnerName, setLearnerName] = useState('');
     const [showCertificate, setShowCertificate] = useState(false);
+    const [feedbackGiven, setFeedbackGiven] = useState(false);
     const certificateRef = useRef<HTMLDivElement>(null);
+
+    const handleFeedback = (type: 'positive' | 'negative') => {
+        trackEvent('course_feedback', { 
+            course_name: 'ai-basics',
+            feedback_type: type 
+        });
+        setFeedbackGiven(true);
+    };
 
     const handleGenerateCertificate = (e: React.FormEvent) => {
         e.preventDefault();
         if (learnerName.trim()) {
             setShowCertificate(true);
+            trackEvent('certificate_generated', { course_name: 'ai-basics' });
         }
     };
 
@@ -163,6 +174,32 @@ export default function AIBasicsCertificatePage() {
                                 >
                                     ← Back to AI Basics Course
                                 </Link>
+                            </div>
+
+                            <div className="mt-8 pt-8 border-t border-gray-200 dark:border-gray-800">
+                                <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
+                                    Was this course helpful?
+                                </p>
+                                {!feedbackGiven ? (
+                                    <div className="flex gap-4 justify-center">
+                                        <button
+                                            onClick={() => handleFeedback('positive')}
+                                            className="px-6 py-2 bg-green-500 hover:bg-green-600 text-white rounded-lg transition-colors"
+                                        >
+                                            👍 Yes
+                                        </button>
+                                        <button
+                                            onClick={() => handleFeedback('negative')}
+                                            className="px-6 py-2 bg-orange-500 hover:bg-orange-600 text-white rounded-lg transition-colors"
+                                        >
+                                            👎 Needs improvement
+                                        </button>
+                                    </div>
+                                ) : (
+                                    <p className="text-center text-green-500">
+                                        ✓ Thank you for your feedback!
+                                    </p>
+                                )}
                             </div>
                         </div>
                     </>
