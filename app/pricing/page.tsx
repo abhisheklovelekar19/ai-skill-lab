@@ -156,7 +156,7 @@ export default function PricingPage() {
                                 
                                 {/* CTA Form - Waitlist */}
                                 <form 
-                                    action="https://formspree.io/f/YOUR_FORM_ID" 
+                                    action="https://formspree.io/f/mreagvkb" 
                                     method="POST"
                                     className="mb-8"
                                 >

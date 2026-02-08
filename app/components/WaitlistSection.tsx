@@ -33,7 +33,7 @@ export default function WaitlistSection() {
 
                 {/* Waitlist Form */}
                 <form 
-                    action="https://formspree.io/f/YOUR_FORM_ID" 
+                    action="https://formspree.io/f/mreagvkb" 
                     method="POST"
                     className="max-w-md mx-auto"
                 >
