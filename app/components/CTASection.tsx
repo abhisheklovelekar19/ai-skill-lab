@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 export default function CTASection() {
     return (
         <section className="relative py-24 px-4 bg-black overflow-hidden">
@@ -29,12 +31,12 @@ export default function CTASection() {
 
                 {/* Subtext */}
                 <p className="text-lg md:text-xl text-gray-400 mb-10 max-w-2xl mx-auto leading-relaxed">
-                    Start learning today. Explore our comprehensive courses and take the first step toward AI mastery.
+                    Start learning today. Explore our free courses and articles to build your AI skills.
                 </p>
 
                 {/* CTA Buttons */}
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                    <button className="group relative px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold rounded-lg overflow-hidden transition-all duration-300 hover:shadow-[0_0_40px_rgba(6,182,212,0.6)] hover:scale-105">
+                    <Link href="/courses" className="group relative px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold rounded-lg overflow-hidden transition-all duration-300 hover:shadow-[0_0_40px_rgba(6,182,212,0.6)] hover:scale-105">
                         <span className="relative z-10 flex items-center gap-2">
                             Explore Courses
                             <svg 
@@ -47,11 +49,11 @@ export default function CTASection() {
                             </svg>
                         </span>
                         <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                    </button>
+                    </Link>
 
-                    <button className="group px-8 py-4 border border-gray-700 text-gray-300 font-semibold rounded-lg backdrop-blur-sm hover:border-cyan-500/50 hover:bg-cyan-500/5 transition-all duration-300 hover:scale-105">
+                    <Link href="/blog" className="group px-8 py-4 border border-gray-700 text-gray-300 font-semibold rounded-lg backdrop-blur-sm hover:border-cyan-500/50 hover:bg-cyan-500/5 transition-all duration-300 hover:scale-105">
                         <span className="flex items-center gap-2">
-                            View Pricing
+                            Read Blog
                             <svg 
                                 className="w-5 h-5 transition-transform group-hover:translate-x-1" 
                                 fill="none" 
@@ -61,7 +63,7 @@ export default function CTASection() {
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                             </svg>
                         </span>
-                    </button>
+                    </Link>
                 </div>
 
                 {/* Trust indicators */}
@@ -70,7 +72,7 @@ export default function CTASection() {
                         <svg className="w-5 h-5 text-cyan-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
-                        <span>Lifetime Access</span>
+                        <span>100% Free Content</span>
                     </div>
                     <div className="flex items-center gap-2">
                         <svg className="w-5 h-5 text-cyan-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -82,7 +84,7 @@ export default function CTASection() {
                         <svg className="w-5 h-5 text-cyan-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
                         </svg>
-                        <span>Project-Based Learning</span>
+                        <span>Beginner-Friendly</span>
                     </div>
                 </div>
             </div>
