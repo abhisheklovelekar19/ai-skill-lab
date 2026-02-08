@@ -165,6 +165,41 @@ export default function PromptsPage() {
                     </div>
                 </section>
 
+                {/* Certification Section */}
+                <section className="mb-16">
+                    <div className="bg-gradient-to-br from-purple-500/10 to-pink-500/10 rounded-xl p-8 border border-purple-500/30">
+                        <div className="text-center mb-6">
+                            <div className="inline-block text-6xl mb-4">🎓</div>
+                            <h2 className="text-3xl font-bold text-white mb-4">Get Certified</h2>
+                            <p className="text-gray-400 mb-6 max-w-2xl mx-auto">
+                                After completing all 3 lessons, test your knowledge and earn your Prompt Engineering certificate.
+                            </p>
+                            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                                <div className="bg-gradient-to-b from-gray-900/50 to-black/50 rounded-lg p-4 border border-purple-500/20 text-center">
+                                    <div className="text-3xl font-bold text-purple-400 mb-1">10</div>
+                                    <div className="text-sm text-gray-400">Questions</div>
+                                </div>
+                                <div className="bg-gradient-to-b from-gray-900/50 to-black/50 rounded-lg p-4 border border-purple-500/20 text-center">
+                                    <div className="text-3xl font-bold text-purple-400 mb-1">60%</div>
+                                    <div className="text-sm text-gray-400">Passing Score</div>
+                                </div>
+                                <div className="bg-gradient-to-b from-gray-900/50 to-black/50 rounded-lg p-4 border border-purple-500/20 text-center">
+                                    <div className="text-3xl font-bold text-purple-400 mb-1">🎓</div>
+                                    <div className="text-sm text-gray-400">Get Certificate</div>
+                                </div>
+                            </div>
+                            <div className="text-center">
+                                <Link 
+                                    href="/courses/prompts/certification"
+                                    className="inline-block px-8 py-4 bg-gradient-to-r from-purple-500 to-pink-600 text-white font-semibold rounded-lg hover:shadow-[0_0_30px_rgba(168,85,247,0.5)] hover:scale-105 transition-all duration-300"
+                                >
+                                    🎯 Take Certification Test →
+                                </Link>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
                 {/* Start Learning CTA */}
                 <section className="mb-16">
                     <div className="bg-gradient-to-br from-cyan-500/10 to-blue-500/10 rounded-xl p-8 border border-cyan-500/30 text-center">

@@ -299,6 +299,21 @@ export default function Lesson3RealWorldUsesPage() {
                         
                         <div className="space-y-4">
                             <div>
+                                <p className="text-white font-semibold mb-3">🎓 Ready to Get Certified?</p>
+                                <p className="text-gray-400 text-sm mb-4">
+                                    You've completed all 3 lessons! Test your knowledge and earn your AI Basics certificate.
+                                </p>
+                                <div className="flex justify-center mb-6">
+                                    <Link 
+                                        href="/courses/ai-basics/certification"
+                                        className="inline-block px-8 py-4 bg-gradient-to-r from-green-500 to-emerald-600 text-white font-semibold rounded-lg hover:shadow-[0_0_30px_rgba(16,185,129,0.5)] hover:scale-105 transition-all duration-300"
+                                    >
+                                        🎯 Take Certification Test →
+                                    </Link>
+                                </div>
+                            </div>
+                            
+                            <div className="border-t border-purple-500/20 pt-6 mt-6">
                                 <p className="text-white font-semibold mb-3">What's Next?</p>
                                 <div className="flex flex-wrap gap-4 justify-center">
                                     <Link 
