@@ -2,6 +2,10 @@ DirectoryIndex index.html
 
 RewriteEngine On
 
+# Don't rewrite static files (CSS, JS, images, fonts, etc.)
+RewriteCond %{REQUEST_URI} !^/_next/
+RewriteCond %{REQUEST_URI} !\.(css|js|jpg|jpeg|png|gif|svg|ico|woff|woff2|ttf|eot|json|xml|txt)$
+
 # Serve HTML files for clean URLs
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
