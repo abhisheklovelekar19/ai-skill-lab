@@ -50,7 +50,7 @@ export default function CertificatePage() {
                                 Certificate of Completion
                             </h1>
                             <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mb-8">
-                                Congratulations on completing the Automation Fundamentals course! Enter your name to generate your certificate.
+                                Congratulations on passing the Automation Fundamentals Certification Test! Enter your name to generate your certificate.
                             </p>
                         </div>
 

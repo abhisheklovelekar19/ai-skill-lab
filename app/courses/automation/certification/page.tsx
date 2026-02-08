@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { useState } from 'react';
 
-export default function AutomationQuizPage() {
+export default function AutomationCertificationPage() {
     const [answers, setAnswers] = useState<{ [key: number]: string }>({});
     const [submitted, setSubmitted] = useState(false);
     const [score, setScore] = useState(0);
@@ -173,10 +173,10 @@ export default function AutomationQuizPage() {
                         <span className="text-5xl">📝</span>
                     </div>
                     <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
-                        Automation Fundamentals Test
+                        Automation Fundamentals Certification Test
                     </h1>
                     <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-                        Test your knowledge of automation concepts. You need 6/10 (60%) to pass and earn your certificate.
+                        Complete all lessons to unlock this certification test. You need 6/10 (60%) to pass and earn your certificate.
                     </p>
                 </div>
 
@@ -206,16 +206,16 @@ export default function AutomationQuizPage() {
                             {passed ? (
                                 <Link 
                                     href="/courses/automation/certificate"
-                                    className="inline-block px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold rounded-lg hover:shadow-[0_0_30px_rgba(6,182,212,0.5)] hover:scale-105 transition-all duration-300"
+                                    className="inline-block px-8 py-4 bg-gradient-to-r from-green-500 to-emerald-600 text-white font-semibold rounded-lg hover:shadow-[0_0_30px_rgba(16,185,129,0.5)] hover:scale-105 transition-all duration-300"
                                 >
-                                    Get Your Certificate →
+                                    🎓 Get Your Certificate →
                                 </Link>
                             ) : (
                                 <button 
                                     onClick={handleRetry}
-                                    className="inline-block px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold rounded-lg hover:shadow-[0_0_30px_rgba(6,182,212,0.5)] hover:scale-105 transition-all duration-300"
+                                    className="inline-block px-8 py-4 bg-gradient-to-r from-orange-500 to-red-600 text-white font-semibold rounded-lg hover:shadow-[0_0_30px_rgba(249,115,22,0.5)] hover:scale-105 transition-all duration-300"
                                 >
-                                    Try Again
+                                    🔄 Retake Certification Test
                                 </button>
                             )}
                         </div>
@@ -262,9 +262,9 @@ export default function AutomationQuizPage() {
                         <div className="text-center pt-8">
                             <button
                                 type="submit"
-                                className="px-12 py-4 bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold rounded-lg hover:shadow-[0_0_30px_rgba(6,182,212,0.5)] hover:scale-105 transition-all duration-300 text-lg"
+                                className="px-12 py-4 bg-gradient-to-r from-purple-500 to-pink-600 text-white font-semibold rounded-lg hover:shadow-[0_0_30px_rgba(168,85,247,0.5)] hover:scale-105 transition-all duration-300 text-lg"
                             >
-                                Submit Test
+                                📋 Submit Certification Test
                             </button>
                             <p className="text-sm text-gray-500 dark:text-gray-400 mt-4">
                                 Make sure you've answered all questions before submitting.
@@ -273,9 +273,9 @@ export default function AutomationQuizPage() {
                     </form>
                 )}
 
-                {/* Test Info */}
+                {/* Certification Info */}
                 <div className="mt-12 p-6 bg-gradient-to-b from-gray-100/50 to-white/50 dark:from-gray-900/50 dark:to-black/50 rounded-xl border border-cyan-500/20">
-                    <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">Test Information</h3>
+                    <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">Certification Information</h3>
                     <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
                         <li className="flex items-start gap-2">
                             <svg className="w-5 h-5 text-cyan-500 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -293,13 +293,19 @@ export default function AutomationQuizPage() {
                             <svg className="w-5 h-5 text-cyan-500 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                             </svg>
-                            <span>You can retake the test as many times as needed</span>
+                            <span>You can retake the certification test as many times as needed</span>
                         </li>
                         <li className="flex items-start gap-2">
                             <svg className="w-5 h-5 text-cyan-500 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                             </svg>
-                            <span>Pass to receive your certificate of completion</span>
+                            <span>Pass to receive your official certificate of completion</span>
+                        </li>
+                        <li className="flex items-start gap-2">
+                            <svg className="w-5 h-5 text-cyan-500 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            <span>Complete all 3 lessons before taking this test</span>
                         </li>
                     </ul>
                 </div>

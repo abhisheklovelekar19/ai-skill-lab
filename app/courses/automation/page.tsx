@@ -1,6 +1,40 @@
+'use client';
+
 import Link from "next/link";
+import { useState, useEffect } from 'react';
 
 export default function AutomationPage() {
+    const [completedSections, setCompletedSections] = useState<Set<string>>(new Set());
+    const [mounted, setMounted] = useState(false);
+
+    const sections = [
+        { id: 'what-is-automation', title: 'What is Automation?' },
+        { id: 'traditional-vs-ai', title: 'Traditional vs AI-Powered Automation' },
+        { id: 'use-cases', title: 'Real-World Use Cases' }
+    ];
+
+    useEffect(() => {
+        setMounted(true);
+        // Load completed sections from localStorage
+        const stored = localStorage.getItem('automation-completed-sections');
+        if (stored) {
+            setCompletedSections(new Set(JSON.parse(stored)));
+        }
+    }, []);
+
+    const toggleSection = (sectionId: string) => {
+        const newCompleted = new Set(completedSections);
+        if (newCompleted.has(sectionId)) {
+            newCompleted.delete(sectionId);
+        } else {
+            newCompleted.add(sectionId);
+        }
+        setCompletedSections(newCompleted);
+        localStorage.setItem('automation-completed-sections', JSON.stringify(Array.from(newCompleted)));
+    };
+
+    const allSectionsComplete = sections.every(s => completedSections.has(s.id));
+
     return (
         <main className="relative min-h-screen bg-black overflow-hidden">
             {/* Background effects */}
@@ -8,8 +42,7 @@ export default function AutomationPage() {
             <div className="absolute inset-0 bg-[linear-gradient(to_right,#1f1f1f_1px,transparent_1px),linear-gradient(to_bottom,#1f1f1f_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,#000_70%,transparent_110%)]" />
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-96 bg-cyan-500/20 rounded-full blur-[120px]" />
             
-            <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
-                {/* Breadcrumb */}
+            <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-24">{/* Breadcrumb */}
                 <div className="mb-8">
                     <Link href="/courses" className="text-cyan-400 hover:text-cyan-300 transition-colors text-sm">
                         ← Back to Courses
@@ -29,11 +62,56 @@ export default function AutomationPage() {
                     </p>
                 </div>
 
+                {/* Progress Tracker */}
+                {mounted && (
+                    <div className="mb-12 p-6 bg-gradient-to-br from-purple-500/10 to-pink-500/10 rounded-xl border border-purple-500/30">
+                        <div className="flex items-center justify-between mb-4">
+                            <h3 className="text-lg font-semibold text-white">Course Progress</h3>
+                            <span className="text-sm text-purple-400 font-medium">
+                                {completedSections.size}/{sections.length} sections completed
+                            </span>
+                        </div>
+                        <div className="w-full bg-gray-700 rounded-full h-2 mb-4">
+                            <div 
+                                className="bg-gradient-to-r from-purple-500 to-pink-600 h-2 rounded-full transition-all duration-500"
+                                style={{ width: `${(completedSections.size / sections.length) * 100}%` }}
+                            />
+                        </div>
+                        {!allSectionsComplete && (
+                            <p className="text-sm text-gray-400">
+                                Mark each section as complete to unlock the certification test
+                            </p>
+                        )}
+                        {allSectionsComplete && (
+                            <p className="text-sm text-green-400 flex items-center gap-2">
+                                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                                All sections complete! You can now take the certification test.
+                            </p>
+                        )}
+                    </div>
+                )}
+
                 {/* Content Sections */}
                 <div className="space-y-16">
                     {/* Section 1: What is Automation */}
-                    <section>
-                        <h2 className="text-3xl font-bold text-white mb-6">What is Automation?</h2>
+                    <section id="what-is-automation">
+                        <div className="flex items-center justify-between mb-6">
+                            <h2 className="text-3xl font-bold text-white">What is Automation?</h2>
+                            {mounted && (
+                                <button
+                                    onClick={() => toggleSection('what-is-automation')}
+                                    className={`px-4 py-2 rounded-lg font-medium transition-all ${
+                                        completedSections.has('what-is-automation')
+                                            ? 'bg-green-500 text-white'
+                                            : 'bg-gray-700 text-gray-300 hover:bg-gray-600'
+                                    }`}
+                                >
+                                    {completedSections.has('what-is-automation') ? '✓ Completed' : 'Mark Complete'}
+                                </button>
+                            )}
+                        </div>
                         <div className="prose prose-invert max-w-none">
                             <p className="text-gray-400 leading-relaxed mb-4">
                                 Automation means getting a computer to do repetitive tasks for you. Instead of manually doing something 100 times, you set it up once and let the system handle it.
@@ -55,8 +133,22 @@ export default function AutomationPage() {
                     </section>
 
                     {/* Section 2: Traditional vs AI-Powered Automation */}
-                    <section>
-                        <h2 className="text-3xl font-bold text-white mb-6">Traditional Automation vs AI-Powered Automation</h2>
+                    <section id="traditional-vs-ai">
+                        <div className="flex items-center justify-between mb-6">
+                            <h2 className="text-3xl font-bold text-white">Traditional Automation vs AI-Powered Automation</h2>
+                            {mounted && (
+                                <button
+                                    onClick={() => toggleSection('traditional-vs-ai')}
+                                    className={`px-4 py-2 rounded-lg font-medium transition-all ${
+                                        completedSections.has('traditional-vs-ai')
+                                            ? 'bg-green-500 text-white'
+                                            : 'bg-gray-700 text-gray-300 hover:bg-gray-600'
+                                    }`}
+                                >
+                                    {completedSections.has('traditional-vs-ai') ? '✓ Completed' : 'Mark Complete'}
+                                </button>
+                            )}
+                        </div>
                         <p className="text-gray-400 mb-6">
                             Automation has existed for decades, but AI makes it way more powerful. Here's how they differ:
                         </p>
@@ -110,8 +202,22 @@ export default function AutomationPage() {
                     </section>
 
                     {/* Section 3: Practical Use Cases */}
-                    <section>
-                        <h2 className="text-3xl font-bold text-white mb-6">Practical Automation Use Cases</h2>
+                    <section id="use-cases">
+                        <div className="flex items-center justify-between mb-6">
+                            <h2 className="text-3xl font-bold text-white">Practical Automation Use Cases</h2>
+                            {mounted && (
+                                <button
+                                    onClick={() => toggleSection('use-cases')}
+                                    className={`px-4 py-2 rounded-lg font-medium transition-all ${
+                                        completedSections.has('use-cases')
+                                            ? 'bg-green-500 text-white'
+                                            : 'bg-gray-700 text-gray-300 hover:bg-gray-600'
+                                    }`}
+                                >
+                                    {completedSections.has('use-cases') ? '✓ Completed' : 'Mark Complete'}
+                                </button>
+                            )}
+                        </div>
                         <p className="text-gray-400 mb-6">
                             Real examples you can implement starting today. Ranked from easiest to more advanced.
                         </p>
@@ -279,40 +385,56 @@ export default function AutomationPage() {
                         </div>
                     </section>
 
-                    {/* Quiz Section */}
-                    <section className="bg-gradient-to-br from-purple-500/10 to-pink-500/10 rounded-xl p-8 border border-purple-500/30">
-                        <div className="text-center mb-6">
-                            <div className="inline-block text-6xl mb-4">📝</div>
-                            <h2 className="text-3xl font-bold text-white mb-4">Test Your Knowledge</h2>
-                            <p className="text-gray-400 mb-6 max-w-2xl mx-auto">
-                                Ready to put your automation knowledge to the test? Take a 10-question quiz to earn your Certificate of Completion.
-                            </p>
-                        </div>
-                        
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-                            <div className="bg-gradient-to-b from-gray-900/50 to-black/50 rounded-lg p-4 border border-purple-500/20 text-center">
-                                <div className="text-3xl font-bold text-purple-400 mb-1">10</div>
-                                <div className="text-sm text-gray-400">Questions</div>
+                    {/* Certification Section */}
+                    {mounted && (
+                        <section className={`bg-gradient-to-br from-purple-500/10 to-pink-500/10 rounded-xl p-8 border border-purple-500/30 ${!allSectionsComplete ? 'opacity-50' : ''}`}>
+                            <div className="text-center mb-6">
+                                <div className="inline-block text-6xl mb-4">🎓</div>
+                                <h2 className="text-3xl font-bold text-white mb-4">Get Certified</h2>
+                                {!allSectionsComplete ? (
+                                    <>
+                                        <p className="text-gray-400 mb-6 max-w-2xl mx-auto">
+                                            Complete all {sections.length} sections above to unlock the certification test.
+                                        </p>
+                                        <div className="inline-flex items-center gap-2 px-4 py-2 bg-gray-800 rounded-lg border border-gray-700">
+                                            <svg className="w-5 h-5 text-yellow-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                                            </svg>
+                                            <span className="text-gray-300 text-sm font-medium">Certification Locked</span>
+                                        </div>
+                                    </>
+                                ) : (
+                                    <>
+                                        <p className="text-gray-400 mb-6 max-w-2xl mx-auto">
+                                            Ready to test your knowledge? Complete our 10-question certification test to earn your official certificate.
+                                        </p>
+                                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                                            <div className="bg-gradient-to-b from-gray-900/50 to-black/50 rounded-lg p-4 border border-purple-500/20 text-center">
+                                                <div className="text-3xl font-bold text-purple-400 mb-1">10</div>
+                                                <div className="text-sm text-gray-400">Questions</div>
+                                            </div>
+                                            <div className="bg-gradient-to-b from-gray-900/50 to-black/50 rounded-lg p-4 border border-purple-500/20 text-center">
+                                                <div className="text-3xl font-bold text-purple-400 mb-1">60%</div>
+                                                <div className="text-sm text-gray-400">Passing Score</div>
+                                            </div>
+                                            <div className="bg-gradient-to-b from-gray-900/50 to-black/50 rounded-lg p-4 border border-purple-500/20 text-center">
+                                                <div className="text-3xl font-bold text-purple-400 mb-1">🎓</div>
+                                                <div className="text-sm text-gray-400">Get Certificate</div>
+                                            </div>
+                                        </div>
+                                        <div className="text-center">
+                                            <Link 
+                                                href="/courses/automation/certification"
+                                                className="inline-block px-8 py-4 bg-gradient-to-r from-purple-500 to-pink-600 text-white font-semibold rounded-lg hover:shadow-[0_0_30px_rgba(168,85,247,0.5)] hover:scale-105 transition-all duration-300"
+                                            >
+                                                🎯 Take Certification Test →
+                                            </Link>
+                                        </div>
+                                    </>
+                                )}
                             </div>
-                            <div className="bg-gradient-to-b from-gray-900/50 to-black/50 rounded-lg p-4 border border-purple-500/20 text-center">
-                                <div className="text-3xl font-bold text-purple-400 mb-1">60%</div>
-                                <div className="text-sm text-gray-400">Passing Score</div>
-                            </div>
-                            <div className="bg-gradient-to-b from-gray-900/50 to-black/50 rounded-lg p-4 border border-purple-500/20 text-center">
-                                <div className="text-3xl font-bold text-purple-400 mb-1">🎓</div>
-                                <div className="text-sm text-gray-400">Get Certificate</div>
-                            </div>
-                        </div>
-
-                        <div className="text-center">
-                            <Link 
-                                href="/courses/automation/quiz"
-                                className="inline-block px-8 py-4 bg-gradient-to-r from-purple-500 to-pink-600 text-white font-semibold rounded-lg hover:shadow-[0_0_30px_rgba(168,85,247,0.5)] hover:scale-105 transition-all duration-300"
-                            >
-                                Take the Quiz →
-                            </Link>
-                        </div>
-                    </section>
+                        </section>
+                    )}
 
                     {/* Next Steps */}
                     <section className="bg-gradient-to-br from-cyan-500/10 to-blue-500/10 rounded-xl p-8 border border-cyan-500/30">
