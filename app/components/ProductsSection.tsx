@@ -5,20 +5,20 @@ export default function ProductsSection() {
         {
             id: 1,
             title: 'AI Crash Course',
-            description: 'Master the fundamentals of AI, machine learning, and neural networks. Build real-world projects and deploy intelligent systems from scratch.',
-            ctaText: 'Explore Course'
+            description: 'Start from zero and build your first AI project in days, not months. Learn machine learning fundamentals through hands-on exercises. Perfect for complete beginners.',
+            ctaText: 'Learn More'
         },
         {
             id: 2,
             title: 'Prompt Engineering Pro',
-            description: 'Learn advanced prompting techniques to unlock the full potential of AI models. Create custom AI agents and automate complex workflows.',
-            ctaText: 'Explore Course'
+            description: 'Master the art of talking to AI. Write prompts that get you 10x better results from ChatGPT, Claude, and other AI tools. Build custom workflows that save hours daily.',
+            ctaText: 'Learn More'
         },
         {
             id: 3,
             title: 'Automation Toolkit',
-            description: 'Automate repetitive tasks using AI-powered tools and scripts. Increase productivity and free up time for high-value creative work.',
-            ctaText: 'Explore Course'
+            description: 'Stop doing repetitive work. Build AI-powered automation systems that handle emails, data entry, content creation, and more. Reclaim your time for what matters.',
+            ctaText: 'Learn More'
         }
     ];
 

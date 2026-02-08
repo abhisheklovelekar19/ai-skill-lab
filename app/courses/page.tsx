@@ -5,30 +5,30 @@ export default function CoursesPage() {
         {
             id: 1,
             title: 'AI Crash Course',
-            description: 'Master the fundamentals of AI, machine learning, and neural networks. Build real-world projects and deploy intelligent systems from scratch.',
+            description: 'Perfect for complete beginners. Learn how AI works, build your first machine learning model, and understand when to use AI vs traditional programming. By the end, you\'ll know enough to have intelligent conversations about AI and start building simple projects.',
             price: 99,
-            ctaText: 'Enroll Now'
+            ctaText: 'View Details'
         },
         {
             id: 2,
             title: 'Prompt Engineering Pro',
-            description: 'Learn advanced prompting techniques to unlock the full potential of AI models. Create custom AI agents and automate complex workflows.',
+            description: 'Master the #1 skill for working with AI in 2026. Learn to write prompts that get you exactly what you need from ChatGPT, Claude, and other AI tools. Build custom workflows, automate research, and 10x your productivity.',
             price: 149,
-            ctaText: 'Enroll Now'
+            ctaText: 'View Details'
         },
         {
             id: 3,
             title: 'Automation Toolkit',
-            description: 'Automate repetitive tasks using AI-powered tools and scripts. Increase productivity and free up time for high-value creative work.',
+            description: 'Stop wasting time on repetitive tasks. Build AI-powered automation systems for email management, data processing, content creation, and customer support. Real projects you can deploy immediately.',
             price: 129,
-            ctaText: 'Enroll Now'
+            ctaText: 'View Details'
         },
         {
             id: 4,
             title: 'AI Career Blueprint',
-            description: 'Navigate the AI job market with confidence. Build a portfolio, optimize your resume, and land high-paying AI roles in top companies.',
+            description: 'Breaking into AI? This course shows you how. Build a standout portfolio, optimize your resume for AI roles, prepare for technical interviews, and navigate the AI job market. Includes real interview questions and strategies.',
             price: 199,
-            ctaText: 'Enroll Now'
+            ctaText: 'View Details'
         }
     ];
 
@@ -59,16 +59,16 @@ export default function CoursesPage() {
 
                     {/* Heading */}
                     <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">
-                        Transform Your Future with
+                        Learn AI Skills That
                         <br />
                         <span className="bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent">
-                            AI Education
+                            Actually Get Used
                         </span>
                     </h1>
 
                     {/* Subheading */}
                     <p className="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
-                        Choose from our comprehensive collection of AI courses. Each course is designed to deliver practical, career-ready skills through hands-on projects and expert instruction.
+                        No fluff. No theory overload. Just practical AI skills you'll use in the real world. Each course is designed to take you from zero to building actual projects.
                     </p>
                 </div>
 
@@ -86,25 +86,50 @@ export default function CoursesPage() {
                 </div>
 
                 {/* Bottom CTA */}
-                <div className="text-center">
-                    <div className="inline-flex items-center gap-8 text-sm text-gray-500">
-                        <div className="flex items-center gap-2">
-                            <svg className="w-5 h-5 text-cyan-500" fill="currentColor" viewBox="0 0 20 20">
-                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                            </svg>
-                            <span>4.9/5 Average Rating</span>
+                <div className="text-center space-y-8">
+                    {/* Learning Approach */}
+                    <div className="max-w-3xl mx-auto mb-12">
+                        <h3 className="text-2xl font-bold text-white mb-4">Our Learning Approach</h3>
+                        <p className="text-gray-400 mb-6">
+                            Every course follows the same proven formula: Learn → Build → Apply. No endless theory. No outdated content. Just practical skills you can use immediately.
+                        </p>
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                            <div className="bg-gradient-to-b from-gray-900/50 to-black/50 rounded-lg p-6 border border-cyan-500/20">
+                                <div className="text-3xl mb-2">📚</div>
+                                <h4 className="text-lg font-semibold text-white mb-2">Hands-On Projects</h4>
+                                <p className="text-sm text-gray-400">Build real applications, not toy examples</p>
+                            </div>
+                            <div className="bg-gradient-to-b from-gray-900/50 to-black/50 rounded-lg p-6 border border-cyan-500/20">
+                                <div className="text-3xl mb-2">⚡</div>
+                                <h4 className="text-lg font-semibold text-white mb-2">Learn by Doing</h4>
+                                <p className="text-sm text-gray-400">Write code from day one, not week five</p>
+                            </div>
+                            <div className="bg-gradient-to-b from-gray-900/50 to-black/50 rounded-lg p-6 border border-cyan-500/20">
+                                <div className="text-3xl mb-2">🎯</div>
+                                <h4 className="text-lg font-semibold text-white mb-2">Real-World Focus</h4>
+                                <p className="text-sm text-gray-400">Skills you can use in your job tomorrow</p>
+                            </div>
                         </div>
-                        <div className="flex items-center gap-2">
-                            <svg className="w-5 h-5 text-cyan-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                            </svg>
-                            <span>30-Day Money-Back Guarantee</span>
-                        </div>
+                    </div>
+
+                    <div className="inline-flex flex-wrap items-center justify-center gap-8 text-sm text-gray-500">
                         <div className="flex items-center gap-2">
                             <svg className="w-5 h-5 text-cyan-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                             </svg>
                             <span>Lifetime Access</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                            <svg className="w-5 h-5 text-cyan-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                            </svg>
+                            <span>Regular Updates</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                            <svg className="w-5 h-5 text-cyan-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
+                            </svg>
+                            <span>Beginner-Friendly</span>
                         </div>
                     </div>
                 </div>

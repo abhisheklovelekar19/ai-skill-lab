@@ -19,30 +19,30 @@ export default function PricingPage() {
             id: 'starter',
             name: 'Starter',
             price: 99,
-            description: 'Perfect for beginners starting their AI journey',
+            description: 'Perfect for complete beginners taking their first steps into AI',
             features: [
-                'AI Crash Course access',
-                'Hands-on projects & exercises',
-                'Downloadable resources',
+                'AI Crash Course (full access)',
+                '20+ hands-on projects & exercises',
+                'Downloadable resources & templates',
                 'Community forum access',
-                'Lifetime updates',
-                'Email support'
+                'Lifetime access to course updates',
+                'Email support (48hr response)'
             ]
         },
         {
             id: 'pro',
             name: 'Pro',
             price: 249,
-            description: 'For professionals seeking advanced AI skills',
+            description: 'For professionals ready to build real AI systems and automations',
             features: [
-                'All Starter features',
-                'Prompt Engineering Pro',
-                'Automation Toolkit',
-                'Advanced AI projects',
-                'Priority support',
+                'Everything in Starter',
+                'Prompt Engineering Pro course',
+                'Automation Toolkit course',
+                '50+ advanced AI projects',
+                'Priority email support (24hr)',
                 'Weekly live Q&A sessions',
-                '1-on-1 mentorship (2 sessions)',
-                'Career guidance materials'
+                '2 x 1-on-1 mentorship calls',
+                'AI career guidance materials'
             ],
             popular: true
         },
@@ -50,17 +50,17 @@ export default function PricingPage() {
             id: 'mastery',
             name: 'Mastery',
             price: 499,
-            description: 'Complete AI mastery with premium support',
+            description: 'Complete AI mastery with premium support and career assistance',
             features: [
-                'All Pro features',
-                'AI Career Blueprint',
-                'All future courses included',
-                'Exclusive masterclasses',
-                'Premium support (24/7)',
+                'Everything in Pro',
+                'AI Career Blueprint course',
+                'Access to ALL future courses',
+                'Exclusive monthly masterclasses',
+                'Premium support (same-day)',
                 'Monthly 1-on-1 mentorship',
-                'Portfolio review & optimization',
-                'Job placement assistance',
-                'Private community access'
+                'Portfolio & resume review',
+                'Job placement guidance',
+                'Private Slack community'
             ]
         }
     ];
@@ -115,9 +115,16 @@ export default function PricingPage() {
                     </h1>
 
                     {/* Subheading */}
-                    <p className="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
-                        Choose the plan that fits your goals. All plans include lifetime access and free updates.
+                    <p className="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed mb-8">
+                        One-time payment. Lifetime access. No subscriptions, no recurring fees, no surprises.
                     </p>
+                    
+                    {/* Pricing Philosophy */}
+                    <div className="max-w-2xl mx-auto bg-gradient-to-b from-gray-900/50 to-black/50 rounded-xl p-6 border border-cyan-500/20">
+                        <p className="text-gray-300 text-sm leading-relaxed">
+                            <strong className="text-cyan-400">Our pricing philosophy:</strong> AI education should be accessible, not exploitative. Pay once, learn forever. We don't believe in monthly subscriptions that drain your wallet. When you invest in a course, you own it for life—including all future updates.
+                        </p>
+                    </div>
                 </div>
 
                 {/* Pricing Cards */}
@@ -196,26 +203,33 @@ export default function PricingPage() {
                 </div>
 
                 {/* Trust indicators */}
-                <div className="text-center">
+                <div className="text-center space-y-6">
                     <div className="inline-flex flex-wrap items-center justify-center gap-8 text-sm text-gray-500">
                         <div className="flex items-center gap-2">
                             <svg className="w-5 h-5 text-cyan-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                             </svg>
-                            <span>Secure Payment</span>
+                            <span>Secure Checkout</span>
                         </div>
                         <div className="flex items-center gap-2">
                             <svg className="w-5 h-5 text-cyan-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                             </svg>
-                            <span>30-Day Money-Back Guarantee</span>
+                            <span>No Hidden Costs</span>
                         </div>
                         <div className="flex items-center gap-2">
-                            <svg className="w-5 h-5 text-cyan-500" fill="currentColor" viewBox="0 0 20 20">
-                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                            <svg className="w-5 h-5 text-cyan-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
                             </svg>
-                            <span>4.9/5 Rating</span>
+                            <span>Free Updates Forever</span>
                         </div>
+                    </div>
+                    
+                    {/* Additional reassurance */}
+                    <div className="max-w-2xl mx-auto">
+                        <p className="text-sm text-gray-500">
+                            <strong className="text-gray-400">More features coming soon:</strong> We're constantly improving our courses and adding new content. When you buy now, you get all future updates at no extra cost.
+                        </p>
                     </div>
                 </div>
             </div>

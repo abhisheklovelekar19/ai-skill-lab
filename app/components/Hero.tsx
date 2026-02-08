@@ -32,7 +32,7 @@ export default function Hero() {
 
         {/* Subheadline */}
         <p className="text-lg md:text-xl lg:text-2xl text-gray-400 max-w-3xl mx-auto mb-12 leading-relaxed font-light">
-          Learn practical AI skills to automate workflows, build intelligent systems, and unlock career opportunities in the AI-driven economy.
+          Learn practical AI skills that actually work in the real world. Build automation systems, master AI tools, and gain career-ready expertise—no fluff, just results.
         </p>
 
         {/* CTA Buttons */}
@@ -73,15 +73,15 @@ export default function Hero() {
         <div className="mt-16 flex flex-wrap items-center justify-center gap-8 text-sm text-gray-500">
           <div className="flex items-center gap-2">
             <div className="w-1 h-1 rounded-full bg-cyan-500" />
-            <span>10K+ Students</span>
+            <span>Project-Based Learning</span>
           </div>
           <div className="flex items-center gap-2">
             <div className="w-1 h-1 rounded-full bg-cyan-500" />
-            <span>50+ AI Courses</span>
+            <span>Lifetime Access</span>
           </div>
           <div className="flex items-center gap-2">
             <div className="w-1 h-1 rounded-full bg-cyan-500" />
-            <span>Industry Experts</span>
+            <span>Beginner-Friendly</span>
           </div>
         </div>
       </div>
