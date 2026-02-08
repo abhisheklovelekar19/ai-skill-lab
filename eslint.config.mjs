@@ -12,7 +12,24 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Ignore all generated static export files
+    "*.html",
+    "*.txt",
+    "_next/**",
+    "blog/**/*.html",
+    "courses/**/*.html",
+    "pricing/**/*.html",
+    "cancel/**/*.html",
+    "success/**/*.html",
   ]),
+  {
+    rules: {
+      // Disable React unescaped entities rule for apostrophes
+      "react/no-unescaped-entities": "off",
+      // Disable Tailwind CSS class suggestions
+      "@next/next/no-duplicate-class": "off",
+    }
+  }
 ]);
 
 export default eslintConfig;

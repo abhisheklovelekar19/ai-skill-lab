@@ -1,0 +1,27 @@
+# Build outputs
+.next/
+out/
+build/
+dist/
+
+# Generated files
+*.html
+*.txt
+_next/
+
+# Static export folders
+blog/
+courses/
+pricing/
+cancel/
+success/
+_not-found/
+
+# Dependencies
+node_modules/
+
+# Environment
+.env
+.env.local
+.env.production.local
+.env.development.local
