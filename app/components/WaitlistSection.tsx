@@ -1,8 +1,8 @@
 export default function WaitlistSection() {
     return (
-        <section className="relative py-24 px-4 bg-gradient-to-b from-black via-gray-950 to-black overflow-hidden">
+        <section className="relative py-24 px-4 bg-gradient-to-b from-white via-gray-50 to-white dark:from-black dark:via-gray-950 dark:to-black overflow-hidden transition-colors duration-300">
             {/* Background effects */}
-            <div className="absolute inset-0 bg-[linear-gradient(to_right,#1f1f1f_1px,transparent_1px),linear-gradient(to_bottom,#1f1f1f_1px,transparent_1px)] bg-[size:3rem_3rem] opacity-10" />
+            <div className="absolute inset-0 bg-[linear-gradient(to_right,#e5e7eb_1px,transparent_1px),linear-gradient(to_bottom,#e5e7eb_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,#1f1f1f_1px,transparent_1px),linear-gradient(to_bottom,#1f1f1f_1px,transparent_1px)] bg-[size:3rem_3rem] opacity-10" />
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-cyan-500/10 rounded-full blur-[150px]" />
             
             <div className="relative z-10 max-w-4xl mx-auto text-center">
@@ -18,7 +18,7 @@ export default function WaitlistSection() {
                 </div>
 
                 {/* Headline */}
-                <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+                <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
                     Join the AI Skill Lab
                     <br />
                     <span className="bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent">
@@ -27,7 +27,7 @@ export default function WaitlistSection() {
                 </h2>
 
                 {/* Description */}
-                <p className="text-lg text-gray-400 mb-8 max-w-2xl mx-auto leading-relaxed">
+                <p className="text-lg text-gray-600 dark:text-gray-400 mb-8 max-w-2xl mx-auto leading-relaxed">
                     Be the first to know when our courses launch. Get early access, exclusive updates, and special launch pricing. No spam, just valuable AI education updates.
                 </p>
 
@@ -43,7 +43,7 @@ export default function WaitlistSection() {
                             name="email"
                             placeholder="Enter your email"
                             required
-                            className="flex-1 px-6 py-4 bg-gray-900/50 border border-cyan-500/30 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-cyan-400/60 focus:ring-2 focus:ring-cyan-400/20 transition-all"
+                            className="flex-1 px-6 py-4 bg-white dark:bg-gray-900/50 border border-cyan-500/30 rounded-lg text-gray-900 dark:text-white placeholder-gray-500 focus:outline-none focus:border-cyan-400/60 focus:ring-2 focus:ring-cyan-400/20 transition-all"
                         />
                         <button
                             type="submit"
@@ -58,13 +58,13 @@ export default function WaitlistSection() {
                     <input type="hidden" name="_next" value="/success?type=waitlist" />
                     
                     {/* Trust message */}
-                    <p className="text-sm text-gray-500">
+                    <p className="text-sm text-gray-500 dark:text-gray-500">
                         We respect your privacy. Unsubscribe anytime.
                     </p>
                 </form>
 
                 {/* Trust indicators */}
-                <div className="mt-12 flex flex-wrap items-center justify-center gap-8 text-sm text-gray-500">
+                <div className="mt-12 flex flex-wrap items-center justify-center gap-8 text-sm text-gray-600 dark:text-gray-500">
                     <div className="flex items-center gap-2">
                         <svg className="w-5 h-5 text-cyan-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />

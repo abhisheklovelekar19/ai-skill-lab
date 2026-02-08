@@ -43,19 +43,19 @@ export default function WhatYouLearnSection() {
     ];
 
     return (
-        <section className="relative py-24 px-4 bg-black overflow-hidden">
+        <section className="relative py-24 px-4 bg-white dark:bg-black overflow-hidden transition-colors duration-300">
             {/* Background gradient */}
-            <div className="absolute inset-0 bg-gradient-to-b from-black via-gray-950 to-black" />
+            <div className="absolute inset-0 bg-gradient-to-b from-white via-gray-50 to-white dark:from-black dark:via-gray-950 dark:to-black" />
             
             {/* Glow accent */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-purple-500/10 rounded-full blur-[150px]" />
             
             <div className="relative z-10 max-w-7xl mx-auto">
                 <div className="text-center mb-16">
-                    <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+                    <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
                         What You'll Learn
                     </h2>
-                    <p className="text-lg text-gray-400 max-w-2xl mx-auto">
+                    <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
                         Every course is designed to give you practical skills you can use immediately
                     </p>
                 </div>
@@ -64,7 +64,7 @@ export default function WhatYouLearnSection() {
                     {learningPillars.map((pillar) => (
                         <div 
                             key={pillar.id} 
-                            className="group relative bg-gradient-to-b from-gray-900 to-black rounded-xl p-8 border border-cyan-500/30 hover:border-cyan-400/60 transition-all duration-300 hover:shadow-[0_0_30px_rgba(6,182,212,0.3)] backdrop-blur-sm"
+                            className="group relative bg-gradient-to-b from-gray-100 to-white dark:from-gray-900 dark:to-black rounded-xl p-8 border border-cyan-500/30 hover:border-cyan-400/60 transition-all duration-300 hover:shadow-[0_0_30px_rgba(6,182,212,0.3)] backdrop-blur-sm"
                         >
                             {/* Hover effect */}
                             <div className="absolute inset-0 rounded-xl bg-gradient-to-b from-cyan-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -76,12 +76,12 @@ export default function WhatYouLearnSection() {
                                 </div>
                                 
                                 {/* Title */}
-                                <h3 className="text-2xl font-bold text-white mb-3 bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
+                                <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-3 bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
                                     {pillar.title}
                                 </h3>
                                 
                                 {/* Description */}
-                                <p className="text-gray-400 leading-relaxed">
+                                <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
                                     {pillar.description}
                                 </p>
                             </div>

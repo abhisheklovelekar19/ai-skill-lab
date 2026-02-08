@@ -29,19 +29,19 @@ export default function ProductsSection() {
     ];
 
     return (
-        <section className="relative py-24 px-4 bg-black overflow-hidden">
+        <section className="relative py-24 px-4 bg-white dark:bg-black overflow-hidden transition-colors duration-300">
             {/* Background gradient */}
-            <div className="absolute inset-0 bg-gradient-to-b from-black via-gray-950 to-black" />
+            <div className="absolute inset-0 bg-gradient-to-b from-white via-gray-50 to-white dark:from-black dark:via-gray-950 dark:to-black" />
             
             {/* Subtle grid */}
-            <div className="absolute inset-0 bg-[linear-gradient(to_right,#1f1f1f_1px,transparent_1px),linear-gradient(to_bottom,#1f1f1f_1px,transparent_1px)] bg-[size:3rem_3rem] opacity-20" />
+            <div className="absolute inset-0 bg-[linear-gradient(to_right,#e5e7eb_1px,transparent_1px),linear-gradient(to_bottom,#e5e7eb_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,#1f1f1f_1px,transparent_1px),linear-gradient(to_bottom,#1f1f1f_1px,transparent_1px)] bg-[size:3rem_3rem] opacity-20" />
             
             <div className="relative z-10 max-w-7xl mx-auto">
                 <div className="text-center mb-16">
-                    <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+                    <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
                         Free Learning Tracks
                     </h2>
-                    <p className="text-lg text-gray-400 max-w-2xl mx-auto">
+                    <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
                         Start your AI journey with quality content, completely free. No signup required.
                     </p>
                 </div>
@@ -51,13 +51,13 @@ export default function ProductsSection() {
                         <Link
                             key={item.id}
                             href={item.href}
-                            className="group bg-gradient-to-b from-gray-900/50 to-black/50 rounded-xl p-8 border border-cyan-500/20 hover:border-cyan-500/40 transition-all duration-300 hover:shadow-[0_0_30px_rgba(6,182,212,0.15)]"
+                            className="group bg-gradient-to-b from-gray-100/50 to-white/50 dark:from-gray-900/50 dark:to-black/50 rounded-xl p-8 border border-cyan-500/20 hover:border-cyan-500/40 transition-all duration-300 hover:shadow-[0_0_30px_rgba(6,182,212,0.15)]"
                         >
                             <div className="text-5xl mb-4">{item.icon}</div>
-                            <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors">
+                            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-cyan-400 transition-colors">
                                 {item.title}
                             </h3>
-                            <p className="text-gray-400 mb-6 leading-relaxed">
+                            <p className="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
                                 {item.description}
                             </p>
                             <div className="flex items-center gap-2 text-cyan-400 font-medium group-hover:gap-3 transition-all">

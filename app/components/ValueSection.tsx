@@ -33,16 +33,16 @@ export default function ValueSection() {
     ];
 
     return (
-        <section className="relative py-24 px-4 bg-gradient-to-b from-black via-gray-950 to-black overflow-hidden">
+        <section className="relative py-24 px-4 bg-gradient-to-b from-white via-gray-50 to-white dark:from-black dark:via-gray-950 dark:to-black overflow-hidden transition-colors duration-300">
             {/* Accent glow */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-cyan-500/10 rounded-full blur-[150px]" />
             
             <div className="relative z-10 max-w-7xl mx-auto">
                 <div className="text-center mb-16">
-                    <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+                    <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
                         Why AI Skill Lab?
                     </h2>
-                    <p className="text-lg text-gray-400 max-w-2xl mx-auto">
+                    <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
                         The fastest path from beginner to AI professional
                     </p>
                 </div>
@@ -59,10 +59,10 @@ export default function ValueSection() {
                             </div>
                             
                             {/* Content */}
-                            <h3 className="text-2xl font-bold text-white mb-3">
+                            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-3">
                                 {value.title}
                             </h3>
-                            <p className="text-gray-400 leading-relaxed">
+                            <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
                                 {value.description}
                             </p>
                         </div>

@@ -2,9 +2,9 @@ import Link from 'next/link';
 
 export default function CTASection() {
     return (
-        <section className="relative py-24 px-4 bg-black overflow-hidden">
+        <section className="relative py-24 px-4 bg-white dark:bg-black overflow-hidden transition-colors duration-300">
             {/* Background effects */}
-            <div className="absolute inset-0 bg-gradient-to-b from-black via-cyan-950/20 to-black" />
+            <div className="absolute inset-0 bg-gradient-to-b from-white via-cyan-50/20 to-white dark:from-black dark:via-cyan-950/20 dark:to-black" />
             <div className="absolute top-0 left-1/4 w-96 h-96 bg-cyan-500/20 rounded-full blur-[120px] animate-pulse" />
             <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-500/20 rounded-full blur-[120px] animate-pulse delay-700" />
             
@@ -21,7 +21,7 @@ export default function CTASection() {
                 </div>
 
                 {/* Headline */}
-                <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+                <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-6 leading-tight">
                     Ready to Transform Your
                     <br />
                     <span className="bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent">
@@ -30,7 +30,7 @@ export default function CTASection() {
                 </h2>
 
                 {/* Subtext */}
-                <p className="text-lg md:text-xl text-gray-400 mb-10 max-w-2xl mx-auto leading-relaxed">
+                <p className="text-lg md:text-xl text-gray-600 dark:text-gray-400 mb-10 max-w-2xl mx-auto leading-relaxed">
                     Start learning today. Explore our free courses and articles to build your AI skills.
                 </p>
 
@@ -51,7 +51,7 @@ export default function CTASection() {
                         <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     </Link>
 
-                    <Link href="/blog" className="group px-8 py-4 border border-gray-700 text-gray-300 font-semibold rounded-lg backdrop-blur-sm hover:border-cyan-500/50 hover:bg-cyan-500/5 transition-all duration-300 hover:scale-105">
+                    <Link href="/blog" className="group px-8 py-4 border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 font-semibold rounded-lg backdrop-blur-sm hover:border-cyan-500/50 hover:bg-cyan-500/5 transition-all duration-300 hover:scale-105">
                         <span className="flex items-center gap-2">
                             Read Blog
                             <svg 
@@ -67,7 +67,7 @@ export default function CTASection() {
                 </div>
 
                 {/* Trust indicators */}
-                <div className="mt-12 flex flex-wrap items-center justify-center gap-8 text-sm text-gray-500">
+                <div className="mt-12 flex flex-wrap items-center justify-center gap-8 text-sm text-gray-600 dark:text-gray-500">
                     <div className="flex items-center gap-2">
                         <svg className="w-5 h-5 text-cyan-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
