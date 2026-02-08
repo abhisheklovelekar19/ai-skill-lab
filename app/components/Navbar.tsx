@@ -51,6 +51,15 @@ export default function Navbar() {
                                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-cyan-400 to-blue-500 group-hover:w-full transition-all duration-300" />
                             </span>
                         </Link>
+                        <Link 
+                            href="/certification" 
+                            className="relative text-gray-300 dark:text-gray-300 light:text-gray-700 hover:text-purple-400 transition-all duration-300 text-sm font-medium group"
+                        >
+                            <span className="relative">
+                                Certification
+                                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-purple-400 to-pink-500 group-hover:w-full transition-all duration-300" />
+                            </span>
+                        </Link>
                         {mounted && <ThemeToggle />}
                         <Link 
                             href="/login" 
