@@ -148,6 +148,26 @@ export default function CoursesPage() {
                         </div>
                     </div>
 
+                    {/* Roadmap CTA */}
+                    <div className="max-w-2xl mx-auto bg-gradient-to-r from-cyan-500/10 to-blue-500/10 rounded-xl p-8 border border-cyan-500/30 mb-12">
+                        <div className="flex items-center gap-2 mb-4">
+                            <span className="text-2xl">🗺️</span>
+                            <span className="text-sm font-medium text-cyan-400 tracking-wide">
+                                LEARNING ROADMAP
+                            </span>
+                        </div>
+                        <h3 className="text-2xl font-bold text-white mb-3">Not Sure Where to Start?</h3>
+                        <p className="text-gray-400 mb-6">
+                            View our complete learning roadmap to see how these courses connect and what comes next on your AI learning journey.
+                        </p>
+                        <Link 
+                            href="/roadmap"
+                            className="inline-block px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold rounded-lg hover:shadow-[0_0_30px_rgba(6,182,212,0.5)] hover:scale-105 transition-all duration-300"
+                        >
+                            View Learning Roadmap →
+                        </Link>
+                    </div>
+
                     {/* Advanced Certification CTA */}
                     <div className="max-w-2xl mx-auto bg-gradient-to-r from-purple-500/10 to-pink-500/10 rounded-xl p-8 border border-purple-500/30 mb-12">
                         <div className="flex items-center gap-2 mb-4">
