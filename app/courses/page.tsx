@@ -1,34 +1,33 @@
-import CourseCard from "../components/CourseCard";
+import Link from "next/link";
 
 export default function CoursesPage() {
-    const courses = [
+    const freeTracks = [
         {
             id: 1,
-            title: 'AI Crash Course',
-            description: 'Perfect for complete beginners. Learn how AI works, build your first machine learning model, and understand when to use AI vs traditional programming. By the end, you\'ll know enough to have intelligent conversations about AI and start building simple projects.',
-            price: 99,
-            ctaText: 'View Details'
+            title: 'AI Basics',
+            slug: 'ai-basics',
+            description: 'Start here if you\'re new to AI. Understand what AI actually is, how it differs from traditional programming, and where it fits in the real world.',
+            topics: ['What is AI?', 'AI vs ML vs Automation', 'Real-world applications', 'When to use AI'],
+            icon: '🤖',
+            level: 'Beginner'
         },
         {
             id: 2,
-            title: 'Prompt Engineering Pro',
-            description: 'Master the #1 skill for working with AI in 2026. Learn to write prompts that get you exactly what you need from ChatGPT, Claude, and other AI tools. Build custom workflows, automate research, and 10x your productivity.',
-            price: 149,
-            ctaText: 'View Details'
+            title: 'Prompt Engineering',
+            slug: 'prompts',
+            description: 'Learn to communicate with AI tools effectively. Master the art of writing prompts that get you exactly what you need from ChatGPT, Claude, and other LLMs.',
+            topics: ['Prompt fundamentals', 'Good vs bad prompts', 'Common patterns', 'Practical examples'],
+            icon: '💬',
+            level: 'Beginner'
         },
         {
             id: 3,
-            title: 'Automation Toolkit',
-            description: 'Stop wasting time on repetitive tasks. Build AI-powered automation systems for email management, data processing, content creation, and customer support. Real projects you can deploy immediately.',
-            price: 129,
-            ctaText: 'View Details'
-        },
-        {
-            id: 4,
-            title: 'AI Career Blueprint',
-            description: 'Breaking into AI? This course shows you how. Build a standout portfolio, optimize your resume for AI roles, prepare for technical interviews, and navigate the AI job market. Includes real interview questions and strategies.',
-            price: 199,
-            ctaText: 'View Details'
+            title: 'Automation Fundamentals',
+            slug: 'automation',
+            description: 'Discover how to save time with AI-powered automation. Learn to identify tasks worth automating and how AI makes automation smarter.',
+            topics: ['What is automation?', 'AI + automation together', 'Practical use cases', 'Getting started'],
+            icon: '⚡',
+            level: 'Beginner'
         }
     ];
 
@@ -53,84 +52,114 @@ export default function CoursesPage() {
                             <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-500" />
                         </span>
                         <span className="text-sm font-medium text-cyan-400 tracking-wide">
-                            ALL COURSES
+                            FREE LEARNING TRACKS
                         </span>
                     </div>
 
                     {/* Heading */}
                     <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">
-                        Learn AI Skills That
+                        Start Learning AI
                         <br />
                         <span className="bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent">
-                            Actually Get Used
+                            Completely Free
                         </span>
                     </h1>
 
                     {/* Subheading */}
                     <p className="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
-                        No fluff. No theory overload. Just practical AI skills you'll use in the real world. Each course is designed to take you from zero to building actual projects.
+                        Three focused learning tracks to build your AI foundation. No signup required. No credit card. Just quality content to help you get started.
                     </p>
                 </div>
 
-                {/* Courses Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 mb-16">
-                    {courses.map((course) => (
-                        <CourseCard
-                            key={course.id}
-                            title={course.title}
-                            description={course.description}
-                            price={course.price}
-                            ctaText={course.ctaText}
-                        />
+                {/* Free Tracks Grid */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+                    {freeTracks.map((track) => (
+                        <Link 
+                            href={`/courses/${track.slug}`}
+                            key={track.id}
+                            className="group bg-gradient-to-b from-gray-900/50 to-black/50 rounded-xl p-8 border border-cyan-500/20 hover:border-cyan-500/40 transition-all duration-300 hover:shadow-[0_0_30px_rgba(6,182,212,0.15)]"
+                        >
+                            {/* Icon & Level */}
+                            <div className="flex items-start justify-between mb-4">
+                                <div className="text-5xl">{track.icon}</div>
+                                <span className="px-3 py-1 text-xs font-medium text-cyan-400 bg-cyan-500/10 rounded-full border border-cyan-500/30">
+                                    {track.level}
+                                </span>
+                            </div>
+
+                            {/* Title */}
+                            <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors">
+                                {track.title}
+                            </h3>
+
+                            {/* Description */}
+                            <p className="text-gray-400 mb-6 leading-relaxed">
+                                {track.description}
+                            </p>
+
+                            {/* Topics */}
+                            <div className="space-y-2 mb-6">
+                                {track.topics.map((topic, index) => (
+                                    <div key={index} className="flex items-center gap-2 text-sm text-gray-500">
+                                        <svg className="w-4 h-4 text-cyan-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                        </svg>
+                                        <span>{topic}</span>
+                                    </div>
+                                ))}
+                            </div>
+
+                            {/* CTA */}
+                            <div className="flex items-center gap-2 text-cyan-400 font-medium group-hover:gap-3 transition-all">
+                                <span>Start Learning</span>
+                                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                                </svg>
+                            </div>
+                        </Link>
                     ))}
                 </div>
 
                 {/* Bottom CTA */}
                 <div className="text-center space-y-8">
-                    {/* Learning Approach */}
+                    {/* Learning Philosophy */}
                     <div className="max-w-3xl mx-auto mb-12">
-                        <h3 className="text-2xl font-bold text-white mb-4">Our Learning Approach</h3>
-                        <p className="text-gray-400 mb-6">
-                            Every course follows the same proven formula: Learn → Build → Apply. No endless theory. No outdated content. Just practical skills you can use immediately.
+                        <h2 className="text-3xl font-bold text-white mb-4">Our Learning Philosophy</h2>
+                        <p className="text-gray-400 mb-8 leading-relaxed">
+                            AI doesn't have to be complicated. These free tracks strip away the hype and jargon. You'll get clear explanations, practical examples, and real-world context. Perfect for anyone who wants to understand AI without the overwhelm.
                         </p>
+                        
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                             <div className="bg-gradient-to-b from-gray-900/50 to-black/50 rounded-lg p-6 border border-cyan-500/20">
-                                <div className="text-3xl mb-2">📚</div>
-                                <h4 className="text-lg font-semibold text-white mb-2">Hands-On Projects</h4>
-                                <p className="text-sm text-gray-400">Build real applications, not toy examples</p>
+                                <div className="text-3xl mb-3">📖</div>
+                                <h3 className="text-lg font-semibold text-white mb-2">Clear & Simple</h3>
+                                <p className="text-sm text-gray-400">No jargon. No assumptions. Just clear explanations.</p>
                             </div>
                             <div className="bg-gradient-to-b from-gray-900/50 to-black/50 rounded-lg p-6 border border-cyan-500/20">
-                                <div className="text-3xl mb-2">⚡</div>
-                                <h4 className="text-lg font-semibold text-white mb-2">Learn by Doing</h4>
-                                <p className="text-sm text-gray-400">Write code from day one, not week five</p>
+                                <div className="text-3xl mb-3">🎯</div>
+                                <h3 className="text-lg font-semibold text-white mb-2">Real-World Focus</h3>
+                                <p className="text-sm text-gray-400">Learn things you'll actually use in your life.</p>
                             </div>
                             <div className="bg-gradient-to-b from-gray-900/50 to-black/50 rounded-lg p-6 border border-cyan-500/20">
-                                <div className="text-3xl mb-2">🎯</div>
-                                <h4 className="text-lg font-semibold text-white mb-2">Real-World Focus</h4>
-                                <p className="text-sm text-gray-400">Skills you can use in your job tomorrow</p>
+                                <div className="text-3xl mb-3">🚀</div>
+                                <h3 className="text-lg font-semibold text-white mb-2">Always Free</h3>
+                                <p className="text-sm text-gray-400">Quality education shouldn't cost money.</p>
                             </div>
                         </div>
                     </div>
 
-                    <div className="inline-flex flex-wrap items-center justify-center gap-8 text-sm text-gray-500">
-                        <div className="flex items-center gap-2">
-                            <svg className="w-5 h-5 text-cyan-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                            </svg>
-                            <span>Lifetime Access</span>
-                        </div>
-                        <div className="flex items-center gap-2">
-                            <svg className="w-5 h-5 text-cyan-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
-                            </svg>
-                            <span>Regular Updates</span>
-                        </div>
-                        <div className="flex items-center gap-2">
-                            <svg className="w-5 h-5 text-cyan-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
-                            </svg>
-                            <span>Beginner-Friendly</span>
-                        </div>
+                    {/* Waitlist CTA */}
+                    <div className="max-w-2xl mx-auto bg-gradient-to-r from-cyan-500/10 to-blue-500/10 rounded-xl p-8 border border-cyan-500/30">
+                        <h3 className="text-2xl font-bold text-white mb-3">Want More?</h3>
+                        <p className="text-gray-400 mb-6">
+                            We're building advanced courses with hands-on projects, real-world applications, and deeper technical dives. Join the waitlist to be the first to know when they launch.
+                        </p>
+                        <Link 
+                            href="/#waitlist"
+                            className="inline-block px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold rounded-lg hover:shadow-[0_0_30px_rgba(6,182,212,0.5)] hover:scale-105 transition-all duration-300"
+                        >
+                            Join Waitlist
+                        </Link>
                     </div>
                 </div>
             </div>
