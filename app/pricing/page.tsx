@@ -12,7 +12,7 @@ interface PricingPlan {
 }
 
 export default function PricingPage() {
-    const [isLoading, setIsLoading] = useState<string | null>(null);
+    const [email, setEmail] = useState('');
 
     const plans: PricingPlan[] = [
         {
@@ -64,20 +64,6 @@ export default function PricingPage() {
             ]
         }
     ];
-
-    const handleCheckout = (plan: PricingPlan) => {   
-        setIsLoading(plan.id);
-        
-        // Static export: Direct client-side redirect for mock checkout
-        // Replace this with real payment gateway integration (Stripe/Razorpay) when moving to VPS
-        
-        // Simulate processing delay
-        setTimeout(() => {
-            // Redirect to success page with order details
-            const sessionId = `mock_${Date.now()}_${plan.id}`;
-            window.location.href = `/success?session_id=${sessionId}&plan=${encodeURIComponent(plan.name)}&amount=${plan.price}`;
-        }, 1000);
-    };
 
     return (
         <main className="relative min-h-screen bg-black overflow-hidden">
@@ -165,21 +151,46 @@ export default function PricingPage() {
                                         <span className="text-5xl font-bold text-white">${plan.price}</span>
                                         <span className="text-gray-500">one-time</span>
                                     </div>
-                                    <p className="text-sm text-gray-500 mt-1">Lifetime access • No recurring fees</p>
+                                    <p className="text-sm text-cyan-400 mt-1">Launching Soon • Join Waitlist</p>
                                 </div>
                                 
-                                {/* CTA Button */}
-                                <button
-                                    onClick={() => handleCheckout(plan)}
-                                    disabled={isLoading === plan.id}
-                                    className={`w-full px-6 py-4 font-semibold rounded-lg transition-all duration-300 mb-8 ${
-                                        plan.popular
-                                            ? 'bg-gradient-to-r from-cyan-500 to-blue-600 text-white hover:shadow-[0_0_30px_rgba(6,182,212,0.5)] hover:scale-105'
-                                            : 'bg-cyan-500/10 border border-cyan-500/50 text-cyan-400 hover:bg-cyan-500/20 hover:border-cyan-400'
-                                    } disabled:opacity-50 disabled:cursor-not-allowed`}
+                                {/* CTA Form - Waitlist */}
+                                <form 
+                                    action="https://formspree.io/f/YOUR_FORM_ID" 
+                                    method="POST"
+                                    className="mb-8"
                                 >
-                                    {isLoading === plan.id ? 'Processing...' : 'Get Started'}
-                                </button>
+                                    <input
+                                        type="email"
+                                        name="email"
+                                        placeholder="Enter your email"
+                                        required
+                                        value={email}
+                                        onChange={(e) => setEmail(e.target.value)}
+                                        className="w-full px-4 py-3 mb-3 bg-gray-900/50 border border-cyan-500/30 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-cyan-400/60 focus:ring-2 focus:ring-cyan-400/20 transition-all text-sm"
+                                    />
+                                    <input type="hidden" name="plan" value={plan.name} />
+                                    <input type="hidden" name="_subject" value={`Waitlist: ${plan.name} Plan`} />
+                                    <input type="hidden" name="_next" value="/success?type=waitlist" />
+                                    
+                                    <button
+                                        type="submit"
+                                        className={`w-full px-6 py-4 font-semibold rounded-lg transition-all duration-300 ${
+                                            plan.popular
+                                                ? 'bg-gradient-to-r from-cyan-500 to-blue-600 text-white hover:shadow-[0_0_30px_rgba(6,182,212,0.5)] hover:scale-105'
+                                                : 'bg-cyan-500/10 border border-cyan-500/50 text-cyan-400 hover:bg-cyan-500/20 hover:border-cyan-400'
+                                        }`}
+                                    >
+                                        Join Waitlist
+                                    </button>
+                                </form>
+                                
+                                {/* Launch message */}
+                                <div className="mb-6 p-3 bg-cyan-500/5 border border-cyan-500/20 rounded-lg">
+                                    <p className="text-xs text-cyan-400 text-center">
+                                        🚀 Payments coming soon. Be the first to know!
+                                    </p>
+                                </div>
                                 
                                 {/* Features */}
                                 <div className="flex-1">
