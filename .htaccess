@@ -2,7 +2,9 @@ DirectoryIndex index.html
 
 RewriteEngine On
 
-# Next.js static export (folder-based routing)
+# Serve HTML files for clean URLs
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^([^\.]+)$ $1/index.html [L]
+RewriteCond %{REQUEST_URI} !\.html$
+RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI}\.html -f
+RewriteRule ^(.+)/?$ $1.html [QSA,L]
