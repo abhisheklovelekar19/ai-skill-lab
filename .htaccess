@@ -1,14 +1,78 @@
-DirectoryIndex index.html
+# AI Skill Lab - Hybrid Static HTML + PHP Configuration
+# Supports: Next.js static export + PHP backend API
+# Hosting: GoDaddy shared hosting
 
+# Set default index file
+DirectoryIndex index.html index.php
+
+# Enable Rewrite Engine
 RewriteEngine On
 
-# Don't rewrite static files (CSS, JS, images, fonts, etc.)
-RewriteCond %{REQUEST_URI} !^/_next/
-RewriteCond %{REQUEST_URI} !\.(css|js|jpg|jpeg|png|gif|svg|ico|woff|woff2|ttf|eot|json|xml|txt)$
+# ----- SECTION 1: PHP Endpoints -----
+# Allow PHP files to execute directly (no rewriting)
+RewriteCond %{REQUEST_URI} \.php$
+RewriteRule ^ - [L]
 
-# Serve HTML files for clean URLs
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteCond %{REQUEST_URI} !\.html$
-RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI}\.html -f
+# Allow /api directory and subdirectories (PHP backend)
+RewriteCond %{REQUEST_URI} ^/api/
+RewriteRule ^ - [L]
+
+# ----- SECTION 2: Static Assets -----
+# Don't rewrite static files (CSS, JS, images, fonts, etc.)
+RewriteCond %{REQUEST_URI} ^/_next/
+RewriteRule ^ - [L]
+
+RewriteCond %{REQUEST_URI} \.(css|js|jpg|jpeg|png|gif|svg|ico|webp|woff|woff2|ttf|eot|json|xml|txt|pdf|map)$
+RewriteRule ^ - [L]
+
+# ----- SECTION 3: Static HTML Routing -----
+# Serve existing files and directories as-is
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteRule ^ - [L]
+
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# Serve .html files for clean URLs (e.g., /about serves /about.html)
+RewriteCond %{REQUEST_FILENAME}.html -f
 RewriteRule ^(.+)/?$ $1.html [QSA,L]
+
+# ----- SECTION 4: Error Handling -----
+# Prevent directory listing
+Options -Indexes
+
+# Custom error pages (optional - uncomment to use)
+# ErrorDocument 404 /404.html
+# ErrorDocument 403 /403.html
+# ErrorDocument 500 /500.html
+
+# ----- SECTION 5: Security Headers -----
+# Disable server signature
+ServerSignature Off
+
+# Protect sensitive files
+<FilesMatch "^(\.env|\.git|\.htaccess|composer\.(json|lock)|package(-lock)?\.json)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# ----- SECTION 6: Performance -----
+# Enable compression (if supported by hosting)
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/json
+</IfModule>
+
+# Browser caching for static assets
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType image/jpg "access plus 1 year"
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/gif "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/svg+xml "access plus 1 year"
+    ExpiresByType image/webp "access plus 1 year"
+    ExpiresByType text/css "access plus 1 month"
+    ExpiresByType application/javascript "access plus 1 month"
+    ExpiresByType application/json "access plus 0 seconds"
+    ExpiresByType text/html "access plus 0 seconds"
+</IfModule>
