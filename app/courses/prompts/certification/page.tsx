@@ -9,6 +9,9 @@ export default function PromptsCertificationPage() {
     const [submitted, setSubmitted] = useState(false);
     const [score, setScore] = useState(0);
     const [passed, setPassed] = useState(false);
+    const [userName, setUserName] = useState('');
+    const [nameSubmitted, setNameSubmitted] = useState(false);
+    const [isGeneratingCertificate, setIsGeneratingCertificate] = useState(false);
 
     useEffect(() => {
         trackEvent('quiz_start', { course_name: 'prompts' });
@@ -131,7 +134,7 @@ export default function PromptsCertificationPage() {
         setAnswers({ ...answers, [questionId]: answer });
     };
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         
         let correctCount = 0;
@@ -151,9 +154,39 @@ export default function PromptsCertificationPage() {
                 course_name: 'prompts',
                 score: correctCount 
             });
+            
+            // Auto-generate certificate
+            setIsGeneratingCertificate(true);
+            try {
+                const response = await fetch('/api/endpoints/generate_certificate.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        user_name: userName,
+                        course: 'prompts'
+                    })
+                });
+                
+                const data = await response.json();
+                
+                if (data.success && data.certificate_code) {
+                    // Redirect to verification page
+                    window.location.href = `/verify.php?code=${data.certificate_code}`;
+                } else {
+                    console.error('Failed to generate certificate:', data.error);
+                    setIsGeneratingCertificate(false);
+                    alert('Certificate generated! However, we couldn\'t redirect you automatically. Please check your email or contact support.');
+                }
+            } catch (error) {
+                console.error('Error generating certificate:', error);
+                setIsGeneratingCertificate(false);
+                alert('An error occurred while generating your certificate. Please try again or contact support.');
+            }
+        } else {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
-        
-        window.scrollTo({ top: 0, behavior: 'smooth' });
     };
 
     const handleRetry = () => {
@@ -188,6 +221,43 @@ export default function PromptsCertificationPage() {
                     </p>
                 </div>
 
+                {!nameSubmitted && (
+                    <div className="max-w-2xl mx-auto mb-12">
+                        <div className="p-8 rounded-xl border-2 border-purple-500/20 bg-gradient-to-b from-purple-50/50 to-white/50 dark:from-purple-900/20 dark:to-black/20">
+                            <div className="text-center mb-6">
+                                <div className="text-6xl mb-4">👤</div>
+                                <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-3">
+                                    Enter Your Name
+                                </h2>
+                                <p className="text-lg text-gray-700 dark:text-gray-300">
+                                    This will appear on your certificate after you pass the test
+                                </p>
+                            </div>
+                            
+                            <form onSubmit={(e) => { e.preventDefault(); if (userName.trim()) setNameSubmitted(true); }} className="space-y-4">
+                                <div>
+                                    <input
+                                        type="text"
+                                        value={userName}
+                                        onChange={(e) => setUserName(e.target.value)}
+                                        placeholder="Enter your full name"
+                                        className="w-full px-4 py-3 rounded-lg border-2 border-purple-500/20 bg-white dark:bg-black text-gray-900 dark:text-white focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 transition-all"
+                                        required
+                                        minLength={2}
+                                        maxLength={100}
+                                    />
+                                </div>
+                                <button
+                                    type="submit"
+                                    className="w-full px-8 py-4 bg-gradient-to-r from-purple-500 to-pink-600 text-white font-semibold rounded-lg hover:shadow-[0_0_30px_rgba(168,85,247,0.5)] hover:scale-105 transition-all duration-300"
+                                >
+                                    ✨ Continue to Certification Test
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                )}
+
                 {submitted && (
                     <div className={`mb-12 p-8 rounded-xl border-2 ${
                         passed 
@@ -206,11 +276,22 @@ export default function PromptsCertificationPage() {
                             </p>
                             <p className="text-lg text-gray-700 dark:text-gray-300 mb-6">
                                 {passed 
-                                    ? 'You have successfully completed the Prompt Engineering course!' 
+                                    ? isGeneratingCertificate 
+                                        ? 'Generating your certificate...' 
+                                        : 'You have successfully completed the Prompt Engineering course!'
                                     : 'You need at least 6/10 to pass. Review the course material and try again.'}
                             </p>
                             
-                            {passed ? (
+                            {passed && isGeneratingCertificate && (
+                                <div className="flex items-center justify-center gap-3 text-green-700 dark:text-green-400">
+                                    <svg className="animate-spin h-8 w-8" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                    </svg>
+                                    <span className="text-xl font-semibold">Generating your certificate...</span>
+                                </div>
+                            )}
+                            {passed && !isGeneratingCertificate ? (
                                 <Link 
                                     href="/courses/prompts/certificate"
                                     className="inline-block px-8 py-4 bg-gradient-to-r from-green-500 to-emerald-600 text-white font-semibold rounded-lg hover:shadow-[0_0_30px_rgba(16,185,129,0.5)] hover:scale-105 transition-all duration-300"
@@ -229,7 +310,7 @@ export default function PromptsCertificationPage() {
                     </div>
                 )}
 
-                {!submitted && (
+                {!submitted && nameSubmitted && (
                     <form onSubmit={handleSubmit} className="space-y-8">
                         {questions.map((q, index) => (
                             <div key={q.id} className="bg-gradient-to-b from-gray-100/50 to-white/50 dark:from-gray-900/50 dark:to-black/50 rounded-xl p-6 border border-cyan-500/20">
