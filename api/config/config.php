@@ -8,8 +8,8 @@
 
 return [
     'host' => 'localhost',  // Usually 'localhost' for GoDaddy shared hosting
-    'database' => 'your_database_name',  // Replace with your actual database name
-    'username' => 'your_database_user',  // Replace with your actual database username
+    'database' => 'aiskilllab_db',  // Replace with your actual database name
+    'username' => 'aiskilllab_user',  // Replace with your actual database username
     'password' => 'your_database_password',  // Replace with your actual database password
     'charset' => 'utf8mb4',
     'options' => [
