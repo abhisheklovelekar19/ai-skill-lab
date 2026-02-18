@@ -7,10 +7,10 @@
  */
 
 return [
-    'host' => 'localhost',  // Usually 'localhost' for GoDaddy shared hosting
-    'database' => 'aiskilllab_db',  // Replace with your actual database name
-    'username' => 'aiskilllab_user',  // Replace with your actual database username
-    'password' => 'your_database_pass',  // Replace with your actual database password
+    'host' => 'localhost',
+    'database' => 'aiskilllab_db',
+    'username' => 'root',  // Local development uses root
+    'password' => '',  // No password for local root user
     'charset' => 'utf8mb4',
     'options' => [
         PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
